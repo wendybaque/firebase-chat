@@ -7,7 +7,7 @@
 
   .formwrapper {
     background-color: whitesmoke;
-    box-shadow: 10px 10px 25px rgb(208, 205, 205);
+    box-shadow: 10px 10px 25px rgb(255, 255, 255);
     padding: 20px 60px;
     border-radius: 10px;
     display: flex;
@@ -78,6 +78,202 @@
       color: grey;
       font-size: 12px;
       margin-top: 10px;
+    }
+  }
+}
+
+.home {
+  background: linear-gradient(to right, rgb(255, 0, 200), rgb(247, 138, 4));
+  box-shadow: 10px 10px 25px rgb(208, 205, 205);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    border: solid 2px whitesmoke;
+    border-radius: 5px;
+    width: 65%;
+    height: 80%;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 10px 10px 25px rgb(255, 255, 255);
+
+    .sidebar {
+      flex: 1;
+      color: whitesmoke;
+      background-color: rgb(247, 138, 4);
+      border-right: 2px solid whitesmoke;
+
+      .search {
+        border-top: 2px solid whitesmoke;
+        border-bottom: 2px solid whitesmoke;
+
+        .searchform {
+          padding: 10px;
+
+          input {
+            background-color: transparent;
+            border: none;
+            color: whitesmoke;
+            outline: none;
+          }
+          ::placeholder {
+            color: whitesmoke;
+          }
+        }
+
+        .userchat {
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: whitesmoke;
+          cursor: pointer;
+
+          &:hover {
+            background-color: orange;
+          }
+
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          .userchatinfo {
+            span {
+              font-size: 18px;
+              font-weight: bold;
+            }
+
+            p {
+              font-size: 14px;
+              color: whitesmoke;
+            }
+          }
+        }
+      }
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      background-color: orange;
+      height: 50px;
+      padding: 10px;
+      justify-content: space-between;
+
+      .img-logo {
+        height: 30px;
+        width: 30px;
+      }
+
+      .logo {
+        padding: 10px;
+        color: whitesmoke;
+        font-weight: bold;
+      }
+
+      .user {
+        display: flex;
+        gap: 10px;
+
+        img {
+          background-color: aqua;
+          height: 30px;
+          width: 30px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        button {
+          background-color: rgb(255, 0, 200);
+          border: none;
+          border-radius: 5px;
+          padding: 10px;
+          color: whitesmoke;
+          font-size: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .chat {
+      flex: 2;
+      color: whitesmoke;
+
+      .chatinfo {
+        height: 50px;
+        background-color: rgb(255, 0, 200);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        color: whitesmoke;
+      }
+
+      .chaticons {
+        display: flex;
+        gap: 10px;
+
+        img {
+          height: 24px;
+          padding: 5px;
+          cursor: pointer;
+        }
+      }
+
+      .messages {
+        background-color: whitesmoke;
+        color: grey;
+        padding: 10px;
+        height: calc(100% - 160px);
+      }
+
+      .input {
+        height: 50px;
+        background-color: rgb(255, 0, 200);
+        color: white;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        input {
+          width: 100%;
+          border: none;
+          outline: none;
+          color: whitesmoke;
+          border-radius: 5px;
+          font-size: 16px;
+          padding: 5px;
+
+          &::placeholder {
+            color: lightgray;
+          }
+        }
+
+        .send {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          img {
+            height: 24px;
+            width: 24px;
+            cursor: pointer;
+          }
+
+          button {
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            color: orange;
+            font-weight: bold;
+          }
+        }
+      }
     }
   }
 }
