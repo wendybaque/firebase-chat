@@ -20,6 +20,10 @@
       font-size: 24px;
       font-weight: bold;
     }
+    .img-logo {
+      width: 100px;
+      height: 100px;
+    }
 
     .title {
       color: rgb(255, 0, 200);
@@ -39,11 +43,15 @@
         background-color: whitesmoke;
         border-bottom: 1px solid rgb(255, 0, 200);
         &::placeholder {
-            color:grey
+          color: grey;
         }
       }
       button {
-        background: linear-gradient(to left, rgb(255, 0, 200), rgb(247, 138, 4));
+        background: linear-gradient(
+          to left,
+          rgb(255, 0, 200),
+          rgb(247, 138, 4)
+        );
         border: none;
         border-radius: 5px;
         padding: 10px;
@@ -51,11 +59,25 @@
         font-weight: bold;
         cursor: pointer;
       }
-    }
-    p {
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
         color: grey;
         font-size: 12px;
-        margin-top: 10px;
+        cursor: pointer;
+
+        img {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+    p {
+      color: grey;
+      font-size: 12px;
+      margin-top: 10px;
     }
   }
 }
