@@ -1,13 +1,34 @@
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+$pinkColor: rgb(255, 0, 200);
+$orangeColor: rgb(247, 138, 4);
+$lightColor: whitesmoke;
+$greyColor: grey;
+
 .formcontainer {
-  background: linear-gradient(to right, rgb(255, 0, 200), rgb(247, 138, 4));
+  background: linear-gradient(to right, $pinkColor, $orangeColor);
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 
   .formwrapper {
-    background-color: whitesmoke;
-    box-shadow: 10px 10px 25px rgb(255, 255, 255);
+    background-color: $lightColor;
+    box-shadow: 10px 10px 25px $lightColor;
     padding: 20px 60px;
     border-radius: 10px;
     display: flex;
@@ -16,17 +37,21 @@
     gap: 15px;
 
     .logo {
-      color: rgb(255, 0, 200);
+      color: $pinkColor;
       font-size: 24px;
       font-weight: bold;
+      @include tablet {
+        display: none;
+      }
     }
+
     .img-logo {
       width: 100px;
       height: 100px;
     }
 
     .title {
-      color: rgb(255, 0, 200);
+      color: $pinkColor;
       font-size: 16px;
     }
 
@@ -34,28 +59,26 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
+      color: $greyColor;
 
       input {
         padding: 15px;
         width: 250px;
         border: none;
         border-radius: 5px;
-        background-color: whitesmoke;
-        border-bottom: 1px solid rgb(255, 0, 200);
+        background-color: $lightColor;
+        border-bottom: 1px solid $pinkColor;
+        color: $greyColor;
         &::placeholder {
-          color: grey;
+          color: $greyColor;
         }
       }
       button {
-        background: linear-gradient(
-          to left,
-          rgb(255, 0, 200),
-          rgb(247, 138, 4)
-        );
+        background: linear-gradient(to left, $pinkColor, $orangeColor);
         border: none;
         border-radius: 5px;
         padding: 10px;
-        color: whitesmoke;
+        color: $lightColor;
         font-weight: bold;
         cursor: pointer;
       }
@@ -64,7 +87,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        color: grey;
+        color: $greyColor;
         font-size: 12px;
         cursor: pointer;
 
@@ -75,7 +98,7 @@
       }
     }
     p {
-      color: grey;
+      color: $greyColor;
       font-size: 12px;
       margin-top: 10px;
     }
@@ -83,31 +106,35 @@
 }
 
 .home {
-  background: linear-gradient(to right, rgb(255, 0, 200), rgb(247, 138, 4));
-  box-shadow: 10px 10px 25px rgb(208, 205, 205);
+  background: linear-gradient(to right, $pinkColor, $orangeColor);
+  box-shadow: 10px 10px 25px $lightColor;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 
   .container {
-    border: solid 2px whitesmoke;
+    border: solid 2px $lightColor;
     border-radius: 5px;
     width: 65%;
     height: 80%;
     display: flex;
     overflow: hidden;
-    box-shadow: 10px 10px 25px rgb(255, 255, 255);
+    box-shadow: 10px 10px 25px $lightColor;
+    @include tablet {
+      width: 90%;
+    }
 
     .sidebar {
       flex: 1;
-      color: whitesmoke;
-      background-color: rgb(247, 138, 4);
-      border-right: 2px solid whitesmoke;
+      color: $lightColor;
+      background-color: $orangeColor;
+      border-right: 2px solid $lightColor;
+      position: relative;
 
       .search {
-        border-top: 2px solid whitesmoke;
-        border-bottom: 2px solid whitesmoke;
+        border-top: 2px solid $lightColor;
+        border-bottom: 2px solid $lightColor;
 
         .searchform {
           padding: 10px;
@@ -115,11 +142,11 @@
           input {
             background-color: transparent;
             border: none;
-            color: whitesmoke;
+            color: $lightColor;
             outline: none;
           }
           ::placeholder {
-            color: whitesmoke;
+            color: $lightColor;
           }
         }
 
@@ -128,7 +155,7 @@
           display: flex;
           align-items: center;
           gap: 10px;
-          color: whitesmoke;
+          color: $lightColor;
           cursor: pointer;
 
           &:hover {
@@ -150,7 +177,7 @@
 
             p {
               font-size: 14px;
-              color: whitesmoke;
+              color: $lightColor;
             }
           }
         }
@@ -171,8 +198,11 @@
 
       .logo {
         padding: 10px;
-        color: whitesmoke;
+        color: $lightColor;
         font-weight: bold;
+        @include tablet {
+          display: none;
+        }
       }
 
       .user {
@@ -180,7 +210,6 @@
         gap: 10px;
 
         img {
-          background-color: aqua;
           height: 30px;
           width: 30px;
           border-radius: 50%;
@@ -188,29 +217,33 @@
         }
 
         button {
-          background-color: rgb(255, 0, 200);
+          background-color: $pinkColor;
           border: none;
           border-radius: 5px;
           padding: 10px;
-          color: whitesmoke;
+          color: $lightColor;
           font-size: 10px;
           cursor: pointer;
+          @include tablet {
+            position: absolute;
+            bottom: 10px;
+          }
         }
       }
     }
 
     .chat {
       flex: 2;
-      color: whitesmoke;
+      color: $lightColor;
 
       .chatinfo {
         height: 50px;
-        background-color: rgb(255, 0, 200);
+        background-color: $pinkColor;
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 10px;
-        color: whitesmoke;
+        color: $lightColor;
       }
 
       .chaticons {
@@ -225,8 +258,8 @@
       }
 
       .messages {
-        background-color: whitesmoke;
-        color: grey;
+        background-color: $lightColor;
+        color: $greyColor;
         padding: 10px;
         height: calc(100% - 160px);
         overflow: scroll;
@@ -239,7 +272,7 @@
           .messageinfo {
             display: flex;
             flex-direction: column;
-            color: grey;
+            color: $greyColor;
             font-weight: 300;
             img {
               width: 40px;
@@ -257,7 +290,7 @@
 
             p {
               background-color: sandybrown;
-              color: grey;
+              color: $greyColor;
               padding: 10px 20px;
               border-radius: 0px 10px 10px 10px;
               max-width: max-content;
@@ -272,10 +305,10 @@
 
             .messagecontent {
               align-items: flex-end;
-              
+
               p {
                 background-color: pink;
-                color: grey;
+                color: $greyColor;
                 border-radius: 10px 0px 10px 10px;
               }
             }
@@ -285,8 +318,8 @@
 
       .input {
         height: 50px;
-        background-color: rgb(255, 0, 200);
-        color: white;
+        background-color: $pinkColor;
+        color: $lightColor;
         padding: 10px;
         display: flex;
         align-items: center;
@@ -296,7 +329,7 @@
           width: 100%;
           border: none;
           outline: none;
-          color: whitesmoke;
+          color: $lightColor;
           border-radius: 5px;
           font-size: 16px;
           padding: 5px;
