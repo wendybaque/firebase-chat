@@ -7,15 +7,13 @@ import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
+
   return (
     <div className="navbar">
       <img src={logo} alt="Firebase Chat !" className="img-logo" />
       <span className="logo">Firebase Chat !</span>
       <div className="user">
-        <img
-          src={currentUser.photoUrl}
-          alt="Avatar"
-        />
+        <img src={currentUser.photoURL} alt="" />
         <span>{currentUser.displayName}</span>
         <button onClick={() => signOut(auth)}>Logout</button>
       </div>

@@ -1,18 +1,20 @@
-import React from "react";
-import logo from "../assets/favicon.png";
-import add from "../assets/add.webp";
+import React, { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db, storage } from "../firebase";
-import { useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate, Link } from "react-router-dom";
 
+import favicon from "../assets/favicon.png";
+import add from "../assets/add.webp";
+
 const Register = () => {
   const [err, setErr] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const displayName = e.target[0].value;
     const email = e.target[1].value;
@@ -49,11 +51,13 @@ const Register = () => {
           } catch (err) {
             console.log(err);
             setErr(true);
+            setLoading(false);
           }
         });
       });
     } catch (err) {
       setErr(true);
+      setLoading(false);
     }
   };
 
@@ -61,26 +65,24 @@ const Register = () => {
     <div className="formcontainer">
       <div className="formwrapper">
         <span className="logo">Firebase Chat !</span>
-        <img src={logo} alt="Firebase Chat !" className="img-logo" />
+        <img src={favicon} alt="" className="img-logo" />
         <span className="title">Register</span>
         <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="display name" />
-          <input type="email" name="" id="" placeholder="email" />
-          <input
-            type="password"
-            name=""
-            id=""
-            placeholder="password (6 characters minimum)"
-          />
+          <input required type="text" placeholder="display name" />
+          <input required type="email" placeholder="email" />
+          <input required type="password" placeholder="password" />
+          <input required style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
-            <img src={add} alt="add a profile pic" />
+            <img src={add} alt="" />
             <span>Add an avatar</span>
           </label>
-          <input style={{ display: "none" }} type="file" name="" id="file" />
-          <button>Signup</button>
-          {err && <span>Something went wrong !</span>}
-          <p>Do you have an account ? <Link to="/login">Login !</Link></p>
+          <button disabled={loading}>Sign up</button>
+          {loading && "Uploading and compressing the image please wait..."}
+          {err && <span>Something went wrong</span>}
         </form>
+        <p>
+          You do have an account? <Link to="/register">Login</Link>
+        </p>
       </div>
     </div>
   );
