@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import logo from "../assets/favicon.png";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import favicon from "../assets/favicon.png";
 
 const Login = () => {
   const [err, setErr] = useState(false);
@@ -14,26 +14,27 @@ const Login = () => {
     const password = e.target[1].value;
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       navigate("/");
     } catch (err) {
       setErr(true);
     }
   };
-
   return (
     <div className="formcontainer">
       <div className="formwrapper">
         <span className="logo">Firebase Chat !</span>
-        <img src={logo} alt="Firebase Chat !" className="img-logo" />
+        <img src={favicon} alt="" className="img-logo" />
         <span className="title">Login</span>
         <form onSubmit={handleSubmit}>
-          <input type="email" name="" id="" placeholder="email" />
-          <input type="password" name="" id="" placeholder="password" />
-          <button>Signin</button>
-          {err && <span>Something went wrong !</span>}
-          <p>You don't have an account ? <Link to="/register">Register !</Link></p>
+          <input type="email" placeholder="email" />
+          <input type="password" placeholder="password" />
+          <button>Sign in</button>
+          {err && <span>Something went wrong</span>}
         </form>
+        <p>
+          You don't have an account? <Link to="/register">Register</Link>
+        </p>
       </div>
     </div>
   );
