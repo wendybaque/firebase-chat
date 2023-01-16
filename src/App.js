@@ -21,6 +21,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
+        <Route path="login" element={<Login />}></Route>
           <Route path="/">
             <Route
               index
@@ -30,7 +31,6 @@ function App() {
                 </ProtectedRoute>
               }
             ></Route>
-            <Route path="login" element={<Login />}></Route>
             <Route path="register" element={<Register />}></Route>
           </Route>
         </Routes>
